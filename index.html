@@ -132,6 +132,61 @@
             transform: scale(1.08);
         }
 
+                .footer {
+            background: #111;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .footer-logo {
+            text-align: center;
+        }
+
+        .footer-logo img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .footer h3 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social img {
+            width: 30px;
+        }
+
+        .footer-social a:hover {
+            transform: scale(1.2);
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+
+
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
             .header {
@@ -150,6 +205,15 @@
 
             .menu-item img {
                 width: 90%;
+            }
+
+             .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-social a {
+                margin: 5px;
             }
         }
     </style>
@@ -200,6 +264,36 @@
     <div style="text-align: center; padding: 2rem 0;">
         <a href="#" class="cta-button">Visit Our Bar</a>
     </div>
+
+     <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/download.png" alt="Boba Cheers Logo">
+                <h2>Boba Cheers</h2>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>📍 1st shop-beside kamphuta group, Ghorabandha, Jamshedpur, Jharkhand 831004</p>
+                <p>📍 2nd shop-near Jubilee park gate 1 , Jamshedpur, Jharkhand 831001 </p>
+                <p>📍 3rd shop-kagalnagar park sonari , Jamshedpur, Jharkhand 831011 </p>
+                <p>📞 <p>
+                <p>✉️ info@bobacheers.com</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="https://www.instagram.com/bobacheers_29/"><img src="assets/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+
+        <p class="copyright">© 2025 Boba Cheers. All rights reserved.</p>
+    </footer>
+
+    
+        
+   
 
 </body>
 </html>
