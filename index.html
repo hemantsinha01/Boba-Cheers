@@ -6,19 +6,101 @@
     <title>Signature Drinks Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2A2A2A;
-            --accent-color: #012520;
+         :root {
+            --primary-color: #FFFFFF;  /* Changed to white for better contrast */
+            --accent-color: #6EE7B7;  /* Cosmic teal accent */
             --text-light: #FFFFFF;
-            --bg-gradient:  linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
-             
+            --bg-gradient: linear-gradient(to bottom, #000428 0%, #004e92 100%);
+            --bg-gradient: radial-gradient(circle, rgba(10,10,25,1) 10%, rgba(5,5,15,1) 50%, rgba(0,0,10,1) 90%);
         }
+
 
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            background: var(--bg-gradient);
             color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+          
+        /* Cosmic Background Elements */
+        .stars-container {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: var(--bg-gradient);
+        }
+
+        .star {
+             position: absolute;
+             background: white;
+             border-radius: 50%;
+             opacity: 0;
+            animation: twinkle infinite linear;
+             }
+
+     
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+             50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.8); }
+        }
+        
+        .shooting-star {
+            position: fixed;
+            width: 3px;
+            height: 80px;
+            background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+            opacity: 0.8;
+            transform: rotate(-45deg);
+            animation: shooting 3s linear infinite;
+        }
+
+
+        @keyframes shooting {
+            0% {
+                top: -10%;
+                left: 80%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                left: 20%;
+                opacity: 0;
+            }
+        }
+
+         /* Galaxy Animation */
+         .galaxy {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10,10,25,0.8) 0%, rgba(5,5,15,0.6) 50%, rgba(0,0,10,0.9) 100%);
+            opacity: 0.4;
+            mix-blend-mode: screen;
+            animation: galaxySpin 30s infinite linear;
+        }
+
+        @keyframes galaxySpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 3rem;
         }
 
         /* --- Header Styling --- */
@@ -26,6 +108,9 @@
             background-image: url('assets/header-bg.jpg'); /* Add a beautiful background */
             background-size: cover;
             background-position: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 2rem;
             text-align: center;
             display: flex;
@@ -72,7 +157,9 @@
         .menu-section {
             margin: 3rem 0;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(5, 240, 197, 0.15);
             transition: all 0.3s ease-in-out;
@@ -220,7 +307,9 @@
     </style>
 </head>
 <body>
-
+    <div class="stars-container" id="starsContainer"></div>
+    <div class="stars"></div>
+    <div class="galaxy"></div>
     <!-- Header with Logo -->
     <header class="header">
         <img src="assets/download.png" alt="Boba Cheers Logo" class="logo">
@@ -235,7 +324,7 @@
             <h2 class="menu-title">Drinks</h2>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <img src="assets/menu.jpg" alt="Drinks Menu">
+                    <img src="assets/Menu 1.png" alt="Drinks Menu">
                 </div>
             </div>
         </section>
@@ -294,9 +383,41 @@
         <p class="copyright">© 2025 Boba Cheers. All rights reserved.</p>
     </footer>
 
-    
+    <script>
+        function createStars() {
+    const container = document.getElementById('starsContainer');
+    for (let i = 0; i < 200; i++) { // Reduced number of stars for performance
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDuration = (Math.random() * 1 + 0.5) + 's'; // Faster animation
+        star.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(star);
+    }
+}
+createStars();
+
+
+function createShootingStars() {
+            setInterval(() => {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(star);
+
+                setTimeout(() => {
+                    star.remove();
+                }, 3000);
+            }, 5000); // New shooting star every 5 seconds
+        }
+
+        createShootingStars();
         
-   
+   </script>
 
 </body>
 </html>
