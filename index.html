@@ -8,7 +8,7 @@
     <style>
          :root {
             --primary-color: #FFFFFF;  /* Changed to white for better contrast */
-            --accent-color: #6EE7B7;  /* Cosmic teal accent */
+            --accent-color: #e56f0f;  /* Cosmic teal accent */
             --text-light: #FFFFFF;
             --bg-gradient: linear-gradient(to bottom, #000428 0%, #004e92 100%);
             --bg-gradient: radial-gradient(circle, rgba(10,10,25,1) 10%, rgba(5,5,15,1) 50%, rgba(0,0,10,1) 90%);
@@ -78,12 +78,16 @@
          /* Galaxy Animation */
          .galaxy {
             position: fixed;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(10,10,25,0.8) 0%, rgba(5,5,15,0.6) 50%, rgba(0,0,10,0.9) 100%);
-            opacity: 0.4;
+            width: 250vw;
+            height: 250vw;
+            top: -75vw;
+            left: -75vw;
+            background: url('https://cdn.esahubble.org/archives/images/screen/heic2007a.jpg'); /* Replace with a visible nebula texture */
+            background-size: cover;
+            opacity: 0.5;
+            filter: blur(20px);
             mix-blend-mode: screen;
-            animation: galaxySpin 30s infinite linear;
+            animation: galaxySpin 60s infinite linear;
         }
 
         @keyframes galaxySpin {
@@ -108,7 +112,7 @@
             background-image: url('assets/header-bg.jpg'); /* Add a beautiful background */
             background-size: cover;
             background-position: center;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 3, 17, 0.7);
             backdrop-filter: blur(5px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 2rem;
@@ -155,14 +159,15 @@
         }
 
         .menu-section {
-            margin: 3rem 0;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(5, 240, 197, 0.15);
-            transition: all 0.3s ease-in-out;
+             margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4); /* Reduced opacity for better background visibility */
+    backdrop-filter: blur(10px); /* Reduced blur so the galaxy remains visible */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Slightly brighter border for contrast */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(5, 240, 197, 0.25); /* Increased visibility of shadow */
+    transition: all 0.3s ease-in-out;
+    mix-blend-mode: lighten;
         }
 
         .menu-section:hover {
@@ -385,8 +390,8 @@
 
     <script>
         function createStars() {
-    const container = document.getElementById('starsContainer');
-    for (let i = 0; i < 200; i++) { // Reduced number of stars for performance
+        const container = document.getElementById('starsContainer');
+        for (let i = 0; i < 200; i++) { // Reduced number of stars for performance
         const star = document.createElement('div');
         star.className = 'star';
         star.style.width = Math.random() * 3 + 'px';
